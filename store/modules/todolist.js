@@ -2,7 +2,7 @@
 const initialState = () => {
   return {
     tasks: [
-      { title: 'Learn Nuxt', completed: false},
+      // { id: 1, title: 'Learn Nuxt', completed: false},
     ]
   }
 }
@@ -14,16 +14,16 @@ const state = () => {
 
 const mutations = {
   SET_TASKS(state, payload) {
-    state.tasks = payload
-    console.log(state)
+    state = payload
   }
 }
 
 const actions = {
   ADD_TASK({ commit, state }, newTask) {
     const updatedTasks = [...state.tasks, newTask];
+    console.log(updatedTasks)
     commit('SET_TASKS', updatedTasks);
-    localStorage.setItem('vuex', JSON.stringify(state));
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }
 }
 

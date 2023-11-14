@@ -122,19 +122,27 @@ export default {
   data() {
     return {
       tasks: [
-        { title: 'Learn Nuxt', completed: false, showDeleteButton: false },
+        { id: 1, title: 'Learn Nuxt', completed: false, showDeleteButton: false },
       ],
       doneTasks: 0,
-      newTask: ""
+      newTask: "",
+      taskId: 2
     };
   },
   methods: {
     ...mapActions('todolist', ['ADD_TASK']),
     async addTask() {
       if (this.newTask.trim() !== "") {
-        await this.ADD_TASK({ title: this.newTask, completed: false });
-        this.tasks.push({ title: this.newTask, completed: false });
+        let payload = {
+          id: this.taskId,
+          title: this.newTask,
+          completed: false
+        }
+        this.tasks.push(payload);
+        await this.ADD_TASK(this.tasks);
+        this.taskId++;
         this.newTask = "";
+        // console.log(this.tasks)
       }
     },
     completeTask(index) {
