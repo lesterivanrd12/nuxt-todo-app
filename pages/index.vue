@@ -1,8 +1,8 @@
 <template>
-  <v-container>
+  <v-container class="container" fluid>
     <v-row class="d-flex flex-column justify-center align-center">
       <v-col cols="12" lg="6">
-        <h1>Vue ToDo List</h1>
+        <h1 class="white--text font-weight-bold">Vue ToDo List</h1>
       </v-col>
       <v-col cols="12" lg="6">
         <v-card>
@@ -173,6 +173,13 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  background: linear-gradient(135deg, #41b883, #35495e);
+  height: 100vh;
+  /* padding: 20px;
+  border-radius: 10px; */
+}
+
 .scrollable-list {
   max-height: 300px;
   overflow-y: auto;
